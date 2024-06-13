@@ -208,26 +208,92 @@
 
 // INTERFACE
 
-interface Computer {
-	readonly id: number;
-	brand: string;
-	ram: number;
-	upgradeRam(increase: number): number;
-	storage?: number;
+// interface Computer {
+// 	readonly id: number;
+// 	brand: string;
+// 	ram: number;
+// 	upgradeRam(increase: number): number;
+// 	storage?: number;
+// }
+
+// const laptop: Computer = {
+// 	id: 1,
+// 	brand: 'Lenovo',
+// 	ram: 8,
+// 	upgradeRam(amount) {
+// 		this.ram += amount;
+// 		return this.ram;
+// 	},
+// };
+
+// laptop.storage = 256;
+
+// console.log(laptop.upgradeRam(4));
+
+// console.log(laptop);
+
+// CHALLENGE;
+
+// interface Person {
+// 	name: string;
+// }
+
+// interface DogOwner extends Person {
+// 	dogName: string;
+// }
+
+// interface Manager extends Person {
+// 	managePeople(): void;
+// 	delegateTasks(): void;
+// }
+
+// const employee: Person | DogOwner | Manager = getEmployee();
+// console.log(employee);
+
+// function getEmployee(): Person | DogOwner | Manager {
+// 	const random = Math.random();
+
+// 	if (random < 0.33) {
+// 		return {
+// 			name: 'john',
+// 		};
+// 	} else if (random < 0.66) {
+// 		return {
+// 			name: 'sarah',
+// 			dogName: 'Rex',
+// 		};
+// 	} else {
+// 		return {
+// 			name: 'bob',
+// 			managePeople: () => console.log('Managing people...'),
+// 			delegateTasks: () => console.log('Delegating tasks...'),
+// 		};
+// 	}
+// }
+
+// ------------------------------------------------------------------------------------------------------
+
+// TUPLES
+
+let person: [string, number] = ['john', 25];
+console.log(person[0]); // Outputs: john
+console.log(person[1]); // Outputs: 25
+
+let john: [string, number?] = ['john'];
+
+function getPerson(): [string, number] {
+	return ['john', 25];
 }
 
-const laptop: Computer = {
-	id: 1,
-	brand: 'Lenovo',
-	ram: 8,
-	upgradeRam(amount) {
-		this.ram += amount;
-		return this.ram;
-	},
-};
+let randomPerson = getPerson();
+console.log(randomPerson[0]); // Outputs: john
+console.log(randomPerson[1]);
 
-laptop.storage = 256;
+// let susan: [string, number] = ['susan', 25];
+// susan[0] = 'bob';
+// susan.push('some random value');
 
-console.log(laptop.upgradeRam(4));
-
-console.log(laptop);
+let susan: readonly [string, number] = ['susan', 25];
+// susan[0] = 'bob';
+// susan.push('some random value');
+console.log(susan);
